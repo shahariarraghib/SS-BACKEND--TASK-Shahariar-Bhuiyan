@@ -7,6 +7,11 @@ const mongoose = require("mongoose");
 app.use(cors());
 app.use(express.json());
 
+// route
+const userRoute = require("./Routes/userLogInfo.route");
+
+app.use("/user", userRoute);
+
 app.get("/", (req, res) => {
   res.send("SS-BACKEND--TASK surver is connected!!");
 });
