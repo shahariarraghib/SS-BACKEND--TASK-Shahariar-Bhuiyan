@@ -5,13 +5,14 @@ const veryfyToken = require("../Middleeare/veryfyToken");
 const router = express.Router();
 
 router
-  .route("/")
+  .route("/:category")
   .get(moviesInfoController.getMoviesInfo)
   .post(veryfyToken, moviesInfoController.moviesInfo);
 
 router
-  .route("/:id")
+  .route("/:category/:id")
 
+  .get(moviesInfoController.getMoviesInfoById)
   .patch(veryfyToken, moviesInfoController.patchMoviesInfoById)
   .delete(veryfyToken, moviesInfoController.deleteMoviesInfoById);
 

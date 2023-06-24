@@ -12,7 +12,7 @@ const userRoute = require("./Routes/userLogInfo.route");
 const moviesRoute = require("./Routes/movies.route");
 
 app.use("/user", userRoute);
-app.use("/movie", moviesRoute);
+app.use("/app", moviesRoute);
 
 app.get("/", (req, res) => {
   res.send("SS-BACKEND--TASK surver is connected!!");
