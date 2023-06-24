@@ -1,6 +1,6 @@
-const { signupService, loginService } = require("../Services/user.service");
 const bcryptjs = require("bcryptjs");
-const { generateToken } = require("../utils/token");
+const { generateToken } = require("../Utils/token");
+const { signupService, loginService } = require("../Services/userLogInfo");
 
 exports.signup = async (req, res) => {
   try {
@@ -70,21 +70,21 @@ exports.login = async (req, res) => {
   }
 };
 
-// exports.getMe = async (req, res) => {
-//   try {
-//     //   res.json(req.user);
+exports.getMe = async (req, res) => {
+  try {
+    //   res.json(req.user);
 
-//     const result = await loginService(req.user?.email);
-//     res.status(200).json({
-//       status: "success",
+    const result = await loginService(req.user?.email);
+    res.status(200).json({
+      status: "success",
 
-//       data: result,
-//     });
-//   } catch (error) {
-//     res.status(400).json({
-//       status: "error",
-//       message: "Data couldn't insert",
-//       error: error.message,
-//     });
-//   }
-// };
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "error",
+      message: "Data couldn't insert",
+      error: error.message,
+    });
+  }
+};

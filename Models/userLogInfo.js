@@ -17,13 +17,13 @@ const userSchema = mongoose.Schema(
     password: {
       type: String,
       required: [true, "Password is required"],
-      validate: {
-        validator: (value) =>
-          validator.isStrongPassword(value, {
-            minLength: 6,
-          }),
-        message: "Password {VALUE} is not strong",
-      },
+    //   validate: {
+    //     validator: (value) =>
+    //       validator.isStrongPassword(value, {
+    //         minLength: 4,
+    //       }),
+    //     message: "Password {VALUE} is not strong",
+    //   },
     },
     confirmPassword: {
       type: String,
@@ -38,7 +38,8 @@ const userSchema = mongoose.Schema(
 
     role: {
       type: String,
-      required: [true, "please provide user role"],
+      enum: ["admin", "moderator", "reader"],
+      default: "reader",
     },
 
     status: {
